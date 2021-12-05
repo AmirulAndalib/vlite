@@ -11,8 +11,7 @@
 		"test:stylelint:fix": "stylelint './src/**/*.css' './docs/theme/assets/stylesheets/**/*.css' --config ./stylelint.config.js --fix"
 	},
 	"dependencies": {
-		"validate-target": "^2.0.0",
-		"vlitejs": "^4.0.4"
+		"validate-target": "^2.0.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.13.15",

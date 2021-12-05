@@ -37,10 +37,7 @@ module.exports = (env, argv) => {
 				},
 				{
 					test: /\.css$/,
-					include: [
-						path.resolve(__dirname, './src'),
-						fs.realpathSync(path.join(__dirname, '/node_modules/vlitejs')) // Useful for npm link compatibility
-					],
+					include: [path.resolve(__dirname, './src')],
 					use: [
 						MiniCssExtractPlugin.loader,
 						{
