@@ -45,10 +45,10 @@ export default class Demo {
 	}
 
 	init() {
-		Vlitejs.registerPlugin('subtitle', VlitejsSubtitle)
-		Vlitejs.registerPlugin('pip', VlitejsPip)
-		Vlitejs.registerProvider('youtube', VlitejsYoutube)
-		Vlitejs.registerProvider('vimeo', VlitejsVimeo)
+		window.Vlitejs.registerPlugin('subtitle', window.VlitejsSubtitle)
+		window.Vlitejs.registerPlugin('pip', window.VlitejsPip)
+		window.Vlitejs.registerProvider('youtube', window.VlitejsYoutube)
+		window.Vlitejs.registerProvider('vimeo', window.VlitejsVimeo)
 
 		this.addEvents()
 		this.initMedia({ provider: 'html5', type: 'video' })
@@ -99,7 +99,7 @@ export default class Demo {
 	initMedia({ provider, type }) {
 		const plugins = provider === 'html5' && type === 'video' ? ['subtitle', 'pip'] : []
 		this.content.innerHTML = this.templates[`${provider}-${type}`]
-		this.instance = new Vlitejs('#player', {
+		this.instance = new window.Vlitejs('#player', {
 			options: this.options[type],
 			plugins,
 			provider,
