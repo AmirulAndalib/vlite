@@ -1,17 +1,14 @@
 const path = require('path')
-const fs = require('fs')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin')
 
 module.exports = (env, argv) => {
 	const isProduction = argv.mode === 'production'
 
 	return {
-		watch: !isProduction,
 		entry: {
 			demo: `${path.resolve(__dirname, './src/demo/config.js')}`
 		},
@@ -21,8 +18,8 @@ module.exports = (env, argv) => {
 		devtool: isProduction ? false : 'source-map',
 		output: {
 			path: path.resolve(__dirname, './dist'),
-			publicPath: '/dist/',
-			filename: 'scripts/[name].js'
+			filename: 'scripts/[name].js',
+			clean: true
 		},
 		module: {
 			rules: [
@@ -61,6 +58,15 @@ module.exports = (env, argv) => {
 				shared: path.resolve(__dirname, './src/shared')
 			}
 		},
+		devServer: {
+			static: {
+				directory: path.resolve(__dirname, './dist')
+			},
+			historyApiFallback: true,
+			port: 3000,
+			compress: true,
+			hot: true
+		},
 		plugins: [
 			new webpack.ProgressPlugin(),
 			new MiniCssExtractPlugin({
@@ -69,11 +75,7 @@ module.exports = (env, argv) => {
 			}),
 			new HtmlWebpackPlugin({
 				filename: 'index.html',
-				template: path.resolve(__dirname, './src/demo/views/demo.html'),
-				publicPath: ''
-			}),
-			new HtmlWebpackInlineSVGPlugin({
-				allowFromUrl: true
+				template: path.resolve(__dirname, './src/demo/views/demo.html')
 			}),
 			new webpack.optimize.ModuleConcatenationPlugin()
 		],

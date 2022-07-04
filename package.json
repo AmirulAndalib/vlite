@@ -4,7 +4,7 @@
 	"author": "Yoriiis aka Joris DANIEL",
 	"scripts": {
 		"build": "rm -rf ./dist/ && webpack --mode=production",
-		"start": "rm -rf ./dist/ && webpack --mode=development",
+		"start": "rm -rf ./dist/ && webpack serve --mode=development",
 		"test:eslint": "eslint ./src --ignore-pattern dist",
 		"test:eslint:fix": "eslint ./src --ignore-pattern dist --fix",
 		"test:stylelint": "stylelint './src/**/*.css' './docs/theme/assets/stylesheets/**/*.css' --config ./stylelint.config.js",
@@ -28,7 +28,6 @@
 		"eslint-plugin-prettier": "^3.3.1",
 		"eslint-plugin-promise": "^5.1.0",
 		"eslint-plugin-standard": "^5.0.0",
-		"html-webpack-inline-svg-plugin": "^2.3.0",
 		"html-webpack-plugin": "^5.3.1",
 		"mini-css-extract-plugin": "^1.4.1",
 		"postcss": "^8.2.10",
@@ -44,9 +43,9 @@
 		"stylelint-config-standard": "^21.0.0",
 		"stylelint-prettier": "^1.2.0",
 		"terser-webpack-plugin": "^5.1.1",
-		"ts-loader": "^8.0.18",
-		"webpack": "^5.32.0",
-		"webpack-cli": "^4.5.0",
+		"webpack": "^5.64.0",
+		"webpack-cli": "^4.9.1",
+		"webpack-dev-server": "^4.7.3",
 		"webpack-manifest-plugin": "^3.1.0"
 	},
 	"engines": {
